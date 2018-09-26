@@ -41,7 +41,7 @@ export default {
     };
   },
   methods:{
-    
+
   }
 };
 </script> 
@@ -178,13 +178,17 @@ export default {
           width: 30vw;
           border-bottom: 1px solid #fff;
           margin-top: -4px;
-         
         }
         .area{
           display: inline-block;
-          letter-spacing: 5px;
-          text-decoration: underline;
           text-align: center;
+        }
+        .area:after{
+          content: '';
+          display: block;
+          width: 10vw;
+          border-bottom: 1px solid #fff;
+          margin-top: -4px;
         }
       }
     }
