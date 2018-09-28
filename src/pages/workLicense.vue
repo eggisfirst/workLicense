@@ -28,13 +28,13 @@
            <div class="data">入职日期</div><span>{{person.workDate}}</span>
           </li> 
          <li>
-           <div class="area">{{region.province}}</div>&nbsp;省&nbsp;
-           <div class="area">{{region.city}}</div>&nbsp;市&nbsp; 
-           <div class="area">{{region.area}}</div>&nbsp;区&nbsp;(县)
+           <div class="area">{{region.province}}</div>省
+           <div class="area">{{region.city}}</div>市
+           <div class="area">{{region.area}}</div>区（县）
          </li> 
          <li>
-           <div class="series">{{type.franchiser}}</div>&nbsp;经销商&nbsp;
-           <div class="series">{{type.series}}</div>&nbsp;系列&nbsp;
+           <div class="series">{{type.franchiser}}</div>经销商
+           <div class="series">{{type.series}}</div>系列
          </li> 
       </ul> 
      <div class="footer-logo"></div> 
