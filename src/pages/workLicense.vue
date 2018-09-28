@@ -40,8 +40,36 @@ export default {
       item: 4
     };
   },
+  created(){
+    this.getMsg()
+  },
   methods:{
-
+    
+    getMsg:function(){
+      const url = "http://10.12.0.58/derucci/workflow/roster/getPositionById.jsp"
+      // axios.get(url)
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
+      axios({
+        method:'get',
+        url:url,
+        params:{
+          id:"7"
+        }
+      }).then((res) => {
+        console.log('返回数据',res)
+        if(res.data){
+          console.log(res.data)
+        }
+      }).catch(function(error){
+        console.log('返回错误',error)
+      })
+   
+    }
   }
 };
 </script> 
