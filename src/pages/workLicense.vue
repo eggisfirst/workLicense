@@ -18,11 +18,24 @@
       <div class="top-logo"></div> 
       <div class="title">慕思睡眠顾问上岗资格证</div> 
        <ul> 
-         <li><div class="name">姓名</div><span>李白</span></li> 
-         <li><div class="name">性别</div><span>男</span></li> 
-         <li><div class="data">入职日期</div><span>2018年5月23日</span></li> 
-         <li><div class="area">广东</div> 省 <div class="area">东莞</div> 市 <div class="area">南城</div> 区（县）</li> 
-         <li><div class="area">XX</div> 经销商 <div class="area">XX</div> 系列</li> 
+         <li>
+           <div class="name">姓名</div><span>{{person.name}}</span>
+         </li> 
+         <li>
+           <div class="name">性别</div><span>{{person.gender}}</span>
+          </li> 
+         <li>
+           <div class="data">入职日期</div><span>{{person.workDate}}</span>
+          </li> 
+         <li>
+           <div class="area">{{region.province}}</div>&nbsp;省&nbsp;
+           <div class="area">{{region.city}}</div>&nbsp;市&nbsp; 
+           <div class="area">{{region.area}}</div>&nbsp;区&nbsp;(县)
+         </li> 
+         <li>
+           <div class="series">{{type.franchiser}}</div>&nbsp;经销商&nbsp;
+           <div class="series">{{type.series}}</div>&nbsp;系列&nbsp;
+         </li> 
       </ul> 
      <div class="footer-logo"></div> 
      </div> 
@@ -37,7 +50,10 @@ import axios from "axios";
 export default {
   data() {
     return {
-      item: 4
+      item: 4,
+      person:[],
+      region:[],
+      type:[]
     };
   },
   created(){
@@ -46,7 +62,7 @@ export default {
   methods:{
     
     getMsg:function(){
-      const url = "http://10.12.0.58/derucci/workflow/roster/getPositionById.jsp"
+      const url = "http://10.12.0.51/derucci/workflow/roster/getrosterById.jsp?id=1"
       // axios.get(url)
       // .then(function (response) {
       //   console.log(response);
@@ -58,12 +74,16 @@ export default {
         method:'get',
         url:url,
         params:{
-          id:"7"
+  
         }
       }).then((res) => {
-        console.log('返回数据',res)
+        // console.log('返回数据',res)
         if(res.data){
-          console.log(res.data)
+          // console.log(res.data)
+          this.person = res.data
+          this.region = this.person.region
+          this.type = this.person.type
+          console.log(this.person)
         }
       }).catch(function(error){
         console.log('返回错误',error)
@@ -214,7 +234,18 @@ export default {
         .area:after{
           content: '';
           display: block;
-          width: 10vw;
+          width: 12vw;
+          border-bottom: 1px solid #fff;
+          margin-top: -4px;
+        }
+        .series{
+          display: inline-block;
+          text-align: center;
+        }
+        .series:after{
+          content: '';
+          display: block;
+          width: 16vw;
           border-bottom: 1px solid #fff;
           margin-top: -4px;
         }
