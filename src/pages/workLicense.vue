@@ -60,21 +60,14 @@ export default {
     this.getMsg()
   },
   methods:{
-    
     getMsg:function(){
       const url = "http://10.12.0.51/derucci/workflow/roster/getrosterById.jsp?id=1"
-      // axios.get(url)
-      // .then(function (response) {
-      //   console.log(response);
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
+      let id = this.getQueryString("id")
       axios({
         method:'get',
         url:url,
         params:{
-  
+          id:id
         }
       }).then((res) => {
         // console.log('返回数据',res)
@@ -89,6 +82,15 @@ export default {
         console.log('返回错误',error)
       })
    
+    },
+    //获取地址栏url的参数
+    getQueryString:(name) => {
+      let reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i')
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) {
+        return unescape(r[2]);
+      }
+      return null;
     }
   }
 };
@@ -234,7 +236,7 @@ export default {
         .area:after{
           content: '';
           display: block;
-          width: 12vw;
+          width: 10vw;
           border-bottom: 1px solid #fff;
           margin-top: -4px;
         }
@@ -245,7 +247,7 @@ export default {
         .series:after{
           content: '';
           display: block;
-          width: 16vw;
+          width: 14vw;
           border-bottom: 1px solid #fff;
           margin-top: -4px;
         }
