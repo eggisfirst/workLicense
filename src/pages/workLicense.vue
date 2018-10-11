@@ -28,13 +28,13 @@
            <div class="data">入职日期</div><span>{{person.workDate}}</span>
           </li> 
          <li>
-           <div class="area">{{region.province}}</div>省
-           <div class="area">{{region.city}}</div>市
-           <div class="area">{{region.area}}</div>区（县）
+           <div class="area">&nbsp;{{region.province}}&nbsp;</div>省
+           <div class="area">&nbsp;{{region.city}}&nbsp;</div>市
+           <div class="area">&nbsp;{{region.area}}&nbsp;</div>区（县）
          </li> 
          <li>
-           <div class="series">{{type.franchiser}}</div>经销商
-           <div class="series">{{type.series}}</div>系列
+           <div class="series">&nbsp;{{type.franchiser}}&nbsp;</div>经销商
+           <div class="series">&nbsp;{{type.series}}&nbsp;</div>系列
          </li> 
       </ul> 
      <div class="footer-logo"></div> 
@@ -61,13 +61,13 @@ export default {
   },
   methods:{
     getMsg:function(){
-      const url = "http://10.12.0.51/derucci/workflow/roster/getrosterById.jsp?id=1"
-      let id = this.getQueryString("id")
+      const url = "http://10.12.0.51/derucci/workflow/roster/getroster_byId.jsp"
+      // let id = this.getQueryString("id")
       axios({
         method:'get',
         url:url,
         params:{
-          id:id
+          id:35
         }
       }).then((res) => {
         // console.log('返回数据',res)
@@ -84,7 +84,7 @@ export default {
    
     },
     //获取地址栏url的参数
-    getQueryString:(name) => {
+    getQueryString(name){
       let reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i')
       var r = window.location.search.substr(1).match(reg);
       if (r != null) {
@@ -221,24 +221,21 @@ export default {
         span{
           position: absolute;
           left: 20vw;
-        }
-        span::after{
-          content: '';
-          display: block;
           width: 30vw;
           border-bottom: 1px solid #fff;
-          margin-top: -4px;
+          height: 6.6vw;
         }
         .area{
           display: inline-block;
           text-align: center;
+          
         }
         .area:after{
           content: '';
           display: block;
-          width: 10vw;
+          width: 100%;
+          min-width: 3vw;
           border-bottom: 1px solid #fff;
-          margin-top: -4px;
         }
         .series{
           display: inline-block;
@@ -247,9 +244,9 @@ export default {
         .series:after{
           content: '';
           display: block;
-          width: 14vw;
+          width: 100%;
+          min-width: 3vw;
           border-bottom: 1px solid #fff;
-          margin-top: -4px;
         }
       }
     }
