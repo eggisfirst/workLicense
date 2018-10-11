@@ -62,12 +62,16 @@ export default {
   methods:{
     getMsg:function(){
       const url = "http://10.12.0.51/derucci/workflow/roster/getroster_byId.jsp"
-      // let id = this.getQueryString("id")
+      let id = this.getQueryString("id")
+      if(!id){
+        console.log('errorid')
+        this.$router.push({path:'/errorId'})
+      }
       axios({
         method:'get',
         url:url,
         params:{
-          id:35
+          id:id
         }
       }).then((res) => {
         // console.log('返回数据',res)

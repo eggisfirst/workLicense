@@ -8,5 +8,10 @@ export var router = new VueRouter({
     path: '/',
     name: 'workLicense',
     component: resolve => require(['../pages/workLicense'], resolve)
-  }]
+  },{
+    path: '/errorId',
+    name: 'errorId',
+    component: resolve => require(['../pages/errorId'], resolve)
+  }
+]
 })
