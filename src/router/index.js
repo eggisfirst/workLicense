@@ -5,7 +5,7 @@ Vue.use(VueRouter)
 
 export var router = new VueRouter({
   routes: [{
-    path: '/',
+    path: '/workLicense',
     name: 'workLicense',
     component: resolve => require(['../pages/workLicense'], resolve)
   },{

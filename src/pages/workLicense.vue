@@ -63,10 +63,6 @@ export default {
     getMsg:function(){
       const url = "http://10.12.0.51/derucci/workflow/roster/getroster_byId.jsp"
       let id = this.getQueryString("id")
-      if(!id){
-        console.log('errorid')
-        this.$router.push({path:'/errorId'})
-      }
       axios({
         method:'get',
         url:url,
@@ -77,6 +73,10 @@ export default {
         // console.log('返回数据',res)
         if(res.data){
           // console.log(res.data)
+          if(!res.data.name){
+            console.log('no')
+            this.$router.push({path:'/errorId'})
+          }
           this.person = res.data
           this.region = this.person.region
           this.type = this.person.type
