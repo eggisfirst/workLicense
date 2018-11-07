@@ -61,7 +61,7 @@ export default {
   },
   methods:{
     getMsg:function(){
-      const url = "http://10.12.0.51/derucci/workflow/roster/getroster_byId.jsp"
+      const url = "/derucci/workflow/roster/getroster_byId.jsp"
       let id = this.getQueryString("id")
       axios({
         method:'get',
